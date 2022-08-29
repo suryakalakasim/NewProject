@@ -1,0 +1,20 @@
+{
+  "empolyees": [
+    {
+      "id": 1,
+      "name": "chitra",
+      "mobile": "9966557888",
+      "email": "chitra@gmail.com",
+      "company": "HCL Technologies"
+      
+    },
+    {
+      "id": 2,
+      "name": "kala",
+      "mobile": "9966557899",
+      "email": "kala@gmail.com",
+      "company": "navajna Technologies"
+      
+    }
+  ]
+}
