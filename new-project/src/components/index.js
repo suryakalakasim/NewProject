@@ -11,10 +11,10 @@ dispatch(getEmpolyees)
 },[])
   return (
     <div>
-        <center>
-            {empolyeeData.length>0&&empolyeeData?empolyeeData.map((x,i)=><Card key={i} style={{ width: '18rem',marginTop:"5px" }}>
+        {/* <center> */}
+            {empolyeeData.length>0&&empolyeeData?empolyeeData.map((x,i)=><Card key={i} style={{ width: '18rem',marginTop:"5px",display:'inline-block',marginLeft:"5px"}}>
             <CardHeader>
-    Id:{x.id}
+    Id:{i+1}
   </CardHeader>
   <ListGroup flush>
     <ListGroupItem>
@@ -32,7 +32,7 @@ dispatch(getEmpolyees)
   </ListGroup>
 
             </Card>):<h3>data not found</h3>}
-</center>
+{/* </center> */}
     </div>
   )
 }
