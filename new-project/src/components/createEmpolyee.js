@@ -11,12 +11,12 @@ const Basic= () => {
       validationSchema={Yup.object({
         name: Yup.string()
           .max(15, 'Must be 15 characters or less')
-          .required('Required'),
+          .required('Name is Required'),
         mobile: Yup.string()
-          .required('Required'),
-        email: Yup.string().email('Invalid email address').required('Required'),
+          .required('Mobile Number is Required'),
+        email: Yup.string().email('Invalid email address').required('Email is Required'),
         company: Yup.string()
-          .required('Required'),
+          .required('Company is Required'),
       })}
    
     onSubmit={(values) => {
