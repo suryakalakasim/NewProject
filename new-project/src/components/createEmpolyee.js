@@ -1,0 +1,52 @@
+import React, { useState } from 'react';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { createEmpolyees } from '../redux/action';
+const Basic= () => {
+    const dispatch=useDispatch();
+  return (
+    <Formik
+      initialValues={{id:1, name: '', mobile: '', email: '',company:"" }}
+      validationSchema={Yup.object({
+        name: Yup.string()
+          .max(15, 'Must be 15 characters or less')
+          .required('Required'),
+        mobile: Yup.string()
+          .required('Required'),
+        email: Yup.string().email('Invalid email address').required('Required'),
+        company: Yup.string()
+          .required('Required'),
+      })}
+   
+    onSubmit={(values) => {
+        const formData= {id:values.id,name:values.name,mobile:values.mobile, email: values.email, company:values.company }
+         if(values){
+            dispatch(createEmpolyees(formData))
+         }
+        console.log("values",values)
+       
+      }}
+    >
+      <Form>
+        <label htmlFor="name">Name:</label>
+        <Field name="name" type="text" /><br/>
+        <ErrorMessage  name="name" /><br/>
+
+        <label htmlFor="mobile">Mobile:</label>
+        <Field name="mobile" type="number" /><br/>
+        <ErrorMessage name="mobile" /><br/>
+
+        <label htmlFor="email">Email Address:</label>
+        <Field name="email" type="email" /><br/>
+        <ErrorMessage name="email" /><br/>
+        <label htmlFor="company">Company:</label>
+        <Field name="company" type="text" /><br/>
+        <ErrorMessage name="company" /><br/>
+
+        <button type="submit">Submit</button>
+      </Form>
+    </Formik>
+  );
+};
+export default Basic;
