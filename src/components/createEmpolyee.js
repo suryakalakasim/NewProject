@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
@@ -20,7 +20,12 @@ const Basic= () => {
       })}
    
     onSubmit={(values) => {
-        const formData= {id:values.id,name:values.name,mobile:values.mobile, email: values.email, company:values.company }
+        const formData= {
+          "name": values.name,
+          "mobile": values.mobile,
+          "email": values.email,
+          "company": values.company
+          }
          if(values){
             dispatch(createEmpolyees(formData))
          }
@@ -29,22 +34,22 @@ const Basic= () => {
       }}
     >
       <Form>
-        <label htmlFor="name">Name:</label>
+        <label htmlFor="name">Name:</label><br/>
         <Field name="name" type="text" /><br/>
         <ErrorMessage  name="name" /><br/>
 
-        <label htmlFor="mobile">Mobile:</label>
+        <label htmlFor="mobile">Mobile:</label><br/>
         <Field name="mobile" type="number" /><br/>
         <ErrorMessage name="mobile" /><br/>
 
-        <label htmlFor="email">Email Address:</label>
+        <label htmlFor="email">Email Address:</label><br/>
         <Field name="email" type="email" /><br/>
         <ErrorMessage name="email" /><br/>
-        <label htmlFor="company">Company:</label>
+        <label htmlFor="company">Company:</label><br/>
         <Field name="company" type="text" /><br/>
         <ErrorMessage name="company" /><br/>
 
-        <button type="submit">Submit</button>
+        <button type="submit">createEmpolyee</button>
       </Form>
     </Formik>
   );

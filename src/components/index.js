@@ -1,14 +1,18 @@
 import React,{useEffect} from 'react'
 import {useSelector,useDispatch} from 'react-redux'
-import { getEmpolyees } from '../redux/action';
-import {Card,CardHeader,ListGroup,ListGroupItem} from 'reactstrap';
+import { deleteEmpolyees, getEmpolyees } from '../redux/action';
+import {Card,CardHeader,ListGroup,ListGroupItem,Button} from 'reactstrap';
 function Index() {
     const empolyeeData=useSelector(state=>state.empolyees);
     console.log("EMPOLYEEDATA",empolyeeData)
     const dispatch=useDispatch();
 useEffect(()=>{
 dispatch(getEmpolyees)
-},[])
+},[]);
+const handelDelete=(id)=>{
+  dispatch(deleteEmpolyees(id))
+};
+
   return (
     <div>
         {/* <center> */}
@@ -28,6 +32,11 @@ dispatch(getEmpolyees)
     </ListGroupItem>
     <ListGroupItem>
       Company:{x.company}
+    </ListGroupItem>
+    <ListGroupItem>
+    <Button color="danger" onClick={()=>handelDelete(x.id)}>
+    deleteEmpolyee
+  </Button>
     </ListGroupItem>
   </ListGroup>
 
